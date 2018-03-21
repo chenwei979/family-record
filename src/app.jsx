@@ -16,7 +16,7 @@ function permissonHOC(permissionLevel, minPermissionLevel) {
     }
 }
 
-@permissonHOC(2, 4)
+@permissonHOC(5, 4)
 class CustomButton extends React.Component {
     onClick() {
         window.alert("Bruce Chen");
