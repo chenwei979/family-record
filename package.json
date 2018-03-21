@@ -4,11 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --host 127.0.0.1 --inline --colors --profile --config webpack.config.js"
+    "start": "webpack-dev-server --host 192.168.3.15 --inline --colors --profile --config webpack.config.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "jquery": "^3.3.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0"
   },

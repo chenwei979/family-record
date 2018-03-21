@@ -1,10 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import $ from 'jquery';
 
 function permissonHOC(permissionLevel, minPermissionLevel) {
     return function (WrappedComponent) {
         return class HOC extends React.Component {
-            render(){
+            render() {
                 if (permissionLevel >= minPermissionLevel) {
                     return <WrappedComponent></WrappedComponent>;
                 }
@@ -19,6 +20,13 @@ function permissonHOC(permissionLevel, minPermissionLevel) {
 @permissonHOC(5, 4)
 class CustomButton extends React.Component {
     onClick() {
+        $.post("/api/compile", {
+            id: "chenwei_979",
+            script: `window.alert("Bruce Chen")`,
+            contentType: "js",
+            syntax: "babel",
+            version: "default",
+        });
         window.alert("Bruce Chen");
     }
 

@@ -9,8 +9,16 @@ module.exports = {
     },
     devServer: {
         headers: {"Access-Control-Allow-Origin": "*"},
-        host: '0.0.0.0',
+        host: '192.168.3.15',
         port: 8686,
+        proxy: {
+            "/api": {
+                target: "http://127.0.0.1:7001",
+                pathRewrite: {"^/api": ""},
+                changeOrigin: true,
+                secure: false,
+            }
+        }
     },
     module: {
         rules: [
