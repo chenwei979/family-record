@@ -9,10 +9,9 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.jsx$/,
+                test: /\.jsx|\.js$/,
                 exclude: /node_modules/,
                 loader: "babel-loader",
-                query: {presets: ['env', 'react']}
             }
         ]
     },
