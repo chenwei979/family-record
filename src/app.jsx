@@ -1,6 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+function permissonHOC(permissionLevel, minPermissionLevel) {
+    return function (WrappedComponent) {
+        return class HOC extends React.Component {
+            render(){
+                if (permissionLevel >= minPermissionLevel) {
+                    return <WrappedComponent></WrappedComponent>;
+                }
+                else {
+                    return null;
+                }
+            }
+        }
+    }
+}
+
+@permissonHOC(2, 4)
 class CustomButton extends React.Component {
     onClick() {
         window.alert("Bruce Chen");
