@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --config webpack.config.js"
+    "start": "webpack-dev-server --host 127.0.0.1 --inline --colors --profile --config webpack.config.js"
   },
   "author": "",
   "license": "ISC",
