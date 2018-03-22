@@ -5,11 +5,11 @@ const isDevelopment = process.env.NODE_ENV === "development";
 
 module.exports = {
     entry: './src/app.jsx',
-    devtool: isDevelopment ? "source-map" : "none",
     output: {
         filename: 'bundle.js',
         path: isDevelopment ? "/" : path.resolve(__dirname, 'dist')
     },
+    devtool: isDevelopment ? "source-map" : "none",
     devServer: {
         headers: {"Access-Control-Allow-Origin": "*"},
         host: '192.168.3.15',
