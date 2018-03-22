@@ -1,4 +1,5 @@
 const webpack = require('webpack');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const path = require('path');
 
 const isDevelopment = process.env.NODE_ENV === "development";
@@ -26,7 +27,8 @@ module.exports = {
     plugins: [
         new webpack.DllReferencePlugin({
             manifest: require('./dll/vendor-manifest.json')
-        })
+        }),
+        new ExtractTextPlugin('app.css'),
     ],
     module: {
         rules: [
