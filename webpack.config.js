@@ -5,7 +5,7 @@ const isDevelopment = process.env.NODE_ENV === "development";
 
 module.exports = {
     entry: './src/app.jsx',
-    devtool: "source-map",
+    devtool: isDevelopment ? "source-map" : "none",
     output: {
         filename: 'bundle.js',
         path: isDevelopment ? "/" : path.resolve(__dirname, 'dist')
