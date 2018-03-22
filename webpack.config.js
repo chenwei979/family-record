@@ -34,6 +34,17 @@ module.exports = {
                 test: /\.jsx|\.js$/,
                 exclude: /node_modules/,
                 loader: "babel-loader",
+            },
+            {
+                test: /\.(less|css)$/,
+                exclude: /^node_modules$/,
+                use: ExtractTextPlugin.extract({
+                    fallback: "style-loader",
+                    use: [
+                        "css-loader",
+                        "less-loader"
+                    ]
+                })
             }
         ]
     },

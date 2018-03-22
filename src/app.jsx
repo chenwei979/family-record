@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
 
+require("./style/app.less");
+
 function permissonHOC(permissionLevel, minPermissionLevel) {
     return function (WrappedComponent) {
         return class HOC extends React.Component {
@@ -41,7 +43,7 @@ class Application extends React.Component {
     }
 
     render() {
-        return <div onClick={this.onClick.bind(this)}>
+        return <div className="container" onClick={this.onClick.bind(this)}>
             <h1>Hello, this is dynamic script render.</h1>
             <CustomButton></CustomButton>
         </div>;
