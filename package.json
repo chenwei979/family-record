@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --colors --profile --config webpack.config.js"
+    "start": "webpack-dev-server --colors --profile --config webpack.config.js",
+    "dll": "webpack --config webpack.dll.config.js"
   },
   "author": "",
   "license": "ISC",
