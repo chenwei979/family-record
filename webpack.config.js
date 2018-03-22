@@ -1,3 +1,4 @@
+const webpack = require('webpack');
 const path = require('path');
 
 module.exports = {
@@ -20,6 +21,11 @@ module.exports = {
             }
         }
     },
+    plugins: [
+        new webpack.DllReferencePlugin({
+            manifest: require('./dll/vendor-manifest.json')
+        })
+    ],
     module: {
         rules: [
             {
