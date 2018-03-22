@@ -1,12 +1,14 @@
 const webpack = require('webpack');
 const path = require('path');
 
+const isDevelopment = process.env.NODE_ENV === "development";
+
 module.exports = {
     entry: './src/app.jsx',
     devtool: "source-map",
     output: {
         filename: 'bundle.js',
-        path: "/"//path.resolve(__dirname, 'dist')
+        path: isDevelopment ? "/" : path.resolve(__dirname, 'dist')
     },
     devServer: {
         headers: {"Access-Control-Allow-Origin": "*"},
