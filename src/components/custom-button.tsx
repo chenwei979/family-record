@@ -1,23 +1,22 @@
 import * as React from "react";
+import axios from "axios";
 import {permissionHOC} from "../util";
 
 @permissionHOC(5, 4)
 export default class CustomButton extends React.Component {
-    onClick() {
-        fetch("/api/compile", {
+    async onClick() {
+        let response = await axios.post("/api/compile", {
             method: 'POST',
-            body: JSON.stringify({
+            body: {
                 id: "chenwei_979",
                 script: `window.alert("Bruce Chen")`,
                 contentType: "js",
                 syntax: "babel",
                 version: "default",
-            })
-        }).then(response => {
-            return response.json();
-        }).then(data => {
-            console.log(data);
+            }
         });
+
+        console.log(response);
     }
 
     render() {
