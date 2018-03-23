@@ -1,41 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import $ from 'jquery';
+import {CustomButton} from "./components";
 
 import './style/app.less';
-
-function permissonHOC(permissionLevel, minPermissionLevel) {
-    return function (WrappedComponent) {
-        return class HOC extends React.Component {
-            render() {
-                if (permissionLevel >= minPermissionLevel) {
-                    return <WrappedComponent></WrappedComponent>;
-                }
-                else {
-                    return null;
-                }
-            }
-        }
-    }
-}
-
-@permissonHOC(5, 4)
-class CustomButton extends React.Component {
-    onClick() {
-        $.post("/api/compile", {
-            id: "chenwei_979",
-            script: `window.alert("Bruce Chen")`,
-            contentType: "js",
-            syntax: "babel",
-            version: "default",
-        });
-        window.alert("Bruce Chen");
-    }
-
-    render() {
-        return <div onClick={this.onClick.bind(this)}>click here</div>;
-    }
-}
 
 class Application extends React.Component {
     onClick() {
