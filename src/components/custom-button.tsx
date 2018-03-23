@@ -1,18 +1,36 @@
-import * as React from "react";
-import axios from "axios";
-import {permissionHOC} from "../util";
+import * as React from 'react';
+import {connect} from 'react-redux';
+import axios from 'axios';
+import {permissionHOC} from '../util';
 
-@permissionHOC(5, 4)
-export default class CustomButton extends React.Component {
+export interface CustomButtonProps {
+    total: number
+}
+
+// @permissionHOC(5, 4)
+@connect((state: any) => {
+    return {
+        total: state.counter.total
+    };
+})
+export
+
+
+
+
+
+
+
+class CustomButton extends React.Component<CustomButtonProps, any> {
     async onClick() {
-        let response = await axios.post("/api/compile", {
+        let response = await axios.post('/api/compile', {
             method: 'POST',
             body: {
-                id: "chenwei_979",
+                id: 'chenwei_979',
                 script: `window.alert("Bruce Chen")`,
-                contentType: "js",
-                syntax: "babel",
-                version: "default",
+                contentType: 'js',
+                syntax: 'babel',
+                version: 'default',
             }
         });
 
@@ -20,6 +38,9 @@ export default class CustomButton extends React.Component {
     }
 
     render() {
-        return <div onClick={this.onClick.bind(this)}>click here</div>;
+        return <div onClick={this.onClick.bind(this)}>
+            <button>click here</button>
+            <div>{this.props.total}</div>
+        </div>;
     }
 }
