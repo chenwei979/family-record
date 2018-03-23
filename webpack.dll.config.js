@@ -4,7 +4,7 @@ const webpack = require('webpack');
 const DLL_PATH = path.resolve(__dirname, 'dll');
 module.exports = {
     entry: {
-        vendor: ['react', 'react-dom', 'jquery']
+        vendor: ['react', 'react-dom', 'axios']
     },
     output: {
         path: DLL_PATH,
