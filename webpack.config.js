@@ -5,13 +5,16 @@ const path = require('path');
 const isDevelopment = process.env.NODE_ENV === "development";
 
 module.exports = {
-    entry: './src/app.jsx',
+    entry: {
+        app: './src/app.jsx',
+    },
     output: {
-        filename: 'bundle.js',
-        path: isDevelopment ? "/" : path.resolve(__dirname, 'dist')
+        filename: '[name].bundle.js',
+        path: path.resolve(__dirname, 'dist')
     },
     devtool: isDevelopment ? "source-map" : "none",
     devServer: {
+        contentBase: ['./', './dll', './dist'],
         headers: {"Access-Control-Allow-Origin": "*"},
         host: '192.168.3.15',
         port: 8686,
