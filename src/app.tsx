@@ -1,5 +1,5 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import * as React from "react";
+import {render} from 'react-dom';
 import {CustomButton} from "./components";
 
 import './style/app.less';
@@ -17,4 +17,4 @@ class Application extends React.Component {
     }
 }
 
-ReactDOM.render(<Application/>, document.getElementById("app_content"));
+render(<Application/>, document.getElementById("app_content"));

@@ -6,7 +6,7 @@ const isDevelopment = process.env.NODE_ENV === "development";
 
 module.exports = {
     entry: {
-        app: './src/app.jsx',
+        app: './src/app',
     },
     output: {
         filename: '[name].bundle.js',
@@ -36,6 +36,12 @@ module.exports = {
     module: {
         rules: [
             {
+                test: /\.tsx|\.ts$/,
+                exclude: /^node_modules$/,
+                use: 'awesome-typescript-loader'
+                // loader: 'ts-loader'
+            },
+            {
                 test: /\.jsx|\.js$/,
                 exclude: /node_modules/,
                 loader: "babel-loader",
@@ -54,6 +60,6 @@ module.exports = {
         ]
     },
     resolve: {
-        extensions: ['.jsx', '.js']
+        extensions: ['.tsx', '.ts', '.jsx', '.js']
     }
 };
