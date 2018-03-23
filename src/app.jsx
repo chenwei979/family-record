@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
 
-require("./style/app.less");
+import './style/app.less';
 
 function permissonHOC(permissionLevel, minPermissionLevel) {
     return function (WrappedComponent) {
