@@ -5,7 +5,7 @@ export function permissionHOC(currentPermissionLevel, minPermissionLevel) {
         return class HOC extends React.Component {
             render() {
                 if (currentPermissionLevel >= minPermissionLevel) {
-                    return <WrappedComponent></WrappedComponent>;
+                    return <WrappedComponent {...this.props}></WrappedComponent>;
                 }
                 else {
                     return null;

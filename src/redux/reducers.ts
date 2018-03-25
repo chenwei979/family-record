@@ -5,7 +5,7 @@ export interface Counter {
 }
 
 const initialState: Counter = {
-    total: 0,
+    total: 888,
 };
 
 export const counter = (state: Counter = initialState, action) => {
