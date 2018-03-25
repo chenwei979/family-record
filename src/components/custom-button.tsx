@@ -2,9 +2,11 @@ import * as React from 'react';
 import {connect} from 'react-redux';
 import axios from 'axios';
 import {permissionHOC} from '../util';
+import {CountAction} from '../redux/action-types';
 
 export interface CustomButtonProps {
     total: number
+    onClick: () => void;
 }
 
 // @permissionHOC(5, 4)
@@ -30,16 +32,23 @@ class CustomButton extends React.Component<CustomButtonProps, any> {
     }
 
     render() {
-        return <div onClick={this.onClick.bind(this)}>
+        return <div onClick={this.props.onClick.bind(this)}>
             <button>click here</button>
             <div>{this.props.total}</div>
         </div>;
     }
 }
 
-let WrappedCustomButton = permissionHOC(5, 4)(CustomButton);
+const WrappedCustomButton = permissionHOC(5, 4)(CustomButton);
 
-let mapStateToProps = (state: any) => {
+const mapStateToProps = (state: any) => {
     return {total: state.counter.total};
 };
-export default connect(mapStateToProps)(WrappedCustomButton);
+const mapDispatchToProps = (dispatch, ownProps) => {
+    return {
+        onClick: () => {
+            dispatch(CountAction.add(6));
+        }
+    };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(WrappedCustomButton);
