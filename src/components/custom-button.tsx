@@ -8,19 +8,11 @@ export interface CustomButtonProps {
 }
 
 // @permissionHOC(5, 4)
-@connect((state: any) => {
-    return {
-        total: state.counter.total
-    };
-})
-export
-
-
-
-
-
-
-
+// @connect((state: any) => {
+//     return {
+//         total: state.counter.total
+//     };
+// })
 class CustomButton extends React.Component<CustomButtonProps, any> {
     async onClick() {
         let response = await axios.post('/api/compile', {
@@ -44,3 +36,10 @@ class CustomButton extends React.Component<CustomButtonProps, any> {
         </div>;
     }
 }
+
+let WrappedCustomButton = permissionHOC(5, 4)(CustomButton);
+
+let mapStateToProps = (state: any) => {
+    return {total: state.counter.total};
+};
+export default connect(mapStateToProps)(WrappedCustomButton);
