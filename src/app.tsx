@@ -10,12 +10,10 @@ import './style/app.less';
 class Application extends React.Component {
     render() {
         return <AppContainer>
-            <div className="container">
-                <h1>
-                    <FormattedMessage id={AppLocale.AppTitle}/>
-                </h1>
-                <CustomButton></CustomButton>
-            </div>
+            <h1>
+                <FormattedMessage id={AppLocale.AppTitle}/>
+            </h1>
+            <CustomButton></CustomButton>
         </AppContainer>;
     }
 }

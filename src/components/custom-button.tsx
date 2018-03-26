@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {connect} from 'react-redux';
+import {AppLocale} from "../locales";
 import axios from 'axios';
 import {permissionHOC} from '../util';
 import {CountAction} from '../redux/action-types';
@@ -33,7 +34,7 @@ class CustomButton extends React.Component<CustomButtonProps, any> {
 
     render() {
         return <div onClick={this.props.onClick.bind(this)}>
-            <button>click here</button>
+            <button>{MmGlobal.intl.formatMessage({id: AppLocale.AppCustomButtonTitle})}</button>
             <div>{this.props.total}</div>
         </div>;
     }
