@@ -4,7 +4,7 @@ const webpack = require('webpack');
 const DLL_PATH = path.resolve(__dirname, 'dll');
 module.exports = {
     entry: {
-        vendor: ['react', 'react-dom', 'redux', 'react-redux', 'redux-actions', "react-intl", 'axios']
+        vendor: ['react', 'react-dom', 'redux', 'react-redux', 'redux-actions', 'redux-saga', 'react-intl', 'axios']
     },
     output: {
         path: DLL_PATH,
