@@ -9,6 +9,7 @@ import * as zh from "react-intl/locale-data/zh";
 addLocaleData([...en, ...zh]);
 const zhJson = require('./locales/zh.json');
 const enJson = require('./locales/en.json');
+require("./util/global");
 const GlobalIntlInject = injectIntl((props) => {
     MmGlobal.intl = props.intl;
     return <div className="container">{props.children}</div>;
@@ -29,7 +30,7 @@ export class AppContainer extends React.Component {
     render() {
         return <IntlProvider locale='zh' messages={zhJson}>
             <Provider store={store}>
-                <GlobalIntlInject/>
+                <GlobalIntlInject {...this.props}/>
             </Provider>
         </IntlProvider>;
     }
