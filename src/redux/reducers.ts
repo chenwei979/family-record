@@ -1,4 +1,4 @@
-import {ADD_COUNT} from './action-types';
+import {ADD_COUNT, DECREASE_COUNT_SUCCEEDED} from './action-types';
 
 export interface Counter {
     total?: number;
@@ -13,6 +13,8 @@ export const counter = (state: Counter = initialState, action) => {
         case ADD_COUNT:
             const total = state.total + action.payload;
             return {...state, total};
+        case DECREASE_COUNT_SUCCEEDED:
+            return {...state, total: state.total - action.payload};
         default:
             return state;
     }

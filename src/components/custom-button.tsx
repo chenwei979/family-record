@@ -7,7 +7,8 @@ import {CountAction} from '../redux/action-types';
 
 export interface CustomButtonProps {
     total: number
-    onClick: () => void;
+    onClickAdd: () => void;
+    onClickDecrease: () => void;
 }
 
 // @permissionHOC(5, 4)
@@ -33,8 +34,13 @@ class CustomButton extends React.Component<CustomButtonProps, any> {
     }
 
     render() {
-        return <div onClick={this.props.onClick.bind(this)}>
-            <button>{MmGlobal.intl.formatMessage({id: AppLocale.AppCustomButtonTitle})}</button>
+        return <div>
+            <button onClick={this.props.onClickAdd.bind(this)}>
+                {MmGlobal.intl.formatMessage({id: AppLocale.AppCustomButtonTitle})}
+            </button>
+            <button onClick={this.props.onClickDecrease.bind(this)}>
+                {MmGlobal.intl.formatMessage({id: AppLocale.AppCustomButtonTitle})}
+            </button>
             <div>{this.props.total}</div>
         </div>;
     }
@@ -47,8 +53,11 @@ const mapStateToProps = (state: any) => {
 };
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
-        onClick: () => {
+        onClickAdd: () => {
             dispatch(CountAction.add(6));
+        },
+        onClickDecrease: () => {
+            dispatch(CountAction.decrease(3));
         }
     };
 };

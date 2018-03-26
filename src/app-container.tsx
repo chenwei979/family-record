@@ -1,12 +1,14 @@
 import * as React from 'react';
 import {Provider} from 'react-redux';
-import {createStore, combineReducers, Reducer} from 'redux';
+import {Reducer, createStore, combineReducers, applyMiddleware} from 'redux';
+import createSagaMiddleware from 'redux-saga';
+import {rootSaga} from './redux/saga';
 import {counter} from './redux/reducers';
 import {IntlProvider, addLocaleData, injectIntl} from 'react-intl';
 import * as en from "react-intl/locale-data/en";
 import * as zh from "react-intl/locale-data/zh";
 
-addLocaleData([...en, ...zh]);
+//addLocaleData([...en, ...zh]);
 const zhJson = require('./locales/zh.json');
 const enJson = require('./locales/en.json');
 require("./util/global");
@@ -20,7 +22,9 @@ function rootCombineReducers<S>(): Reducer<S> {
     return combineReducers<S>(re);
 }
 
-let store = createStore(rootCombineReducers());
+const sagaMiddleware = createSagaMiddleware();
+const store = createStore(rootCombineReducers(), applyMiddleware(sagaMiddleware));
+sagaMiddleware.run(rootSaga);
 
 export class AppContainer extends React.Component {
     constructor(props, context) {
