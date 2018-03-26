@@ -16,7 +16,7 @@ module.exports = {
     devServer: {
         contentBase: ['./', './dll', './dist'],
         headers: {"Access-Control-Allow-Origin": "*"},
-        host: '192.168.3.15',
+        host: '127.0.0.1',
         port: 8686,
         proxy: {
             "/api": {
