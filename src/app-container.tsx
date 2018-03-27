@@ -2,7 +2,7 @@ import * as React from 'react';
 import {Provider} from 'react-redux';
 import {Reducer, createStore, combineReducers, applyMiddleware} from 'redux';
 import createSagaMiddleware from 'redux-saga';
-import {rootSaga} from './redux/saga';
+import {watcher} from './redux/saga';
 import {counter} from './redux/reducers';
 import {IntlProvider, addLocaleData, injectIntl} from 'react-intl';
 import * as en from "react-intl/locale-data/en";
@@ -24,7 +24,7 @@ function rootCombineReducers<S>(): Reducer<S> {
 
 const sagaMiddleware = createSagaMiddleware();
 const store = createStore(rootCombineReducers(), applyMiddleware(sagaMiddleware));
-sagaMiddleware.run(rootSaga);
+sagaMiddleware.run(watcher);
 
 export class AppContainer extends React.Component {
     constructor(props, context) {

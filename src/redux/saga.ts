@@ -2,14 +2,16 @@ import {call, put, select, fork, take} from 'redux-saga/effects'
 import {CountAction, DECREASE_COUNT} from "./action-types";
 
 function getDecreaseValue(num) {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            resolve(parseInt((Math.random() * 10).toFixed(1)) + num);
-        }, 1000);
-    });
+    let value = parseInt((Math.random() * 10).toFixed(1)) + num;
+    return Promise.resolve(value);
+    // return new Promise((resolve) => {
+    //     setTimeout(() => {
+    //         resolve(value);
+    //     }, 1000);
+    // });
 }
 
-function* decreaseNumber(): any {
+function* worker(): any {
     while (true) {
         try {
             const action = yield take(DECREASE_COUNT);
@@ -22,8 +24,8 @@ function* decreaseNumber(): any {
     }
 }
 
-export function* rootSaga(): any {
+export function* watcher(): any {
     yield [
-        fork(decreaseNumber)
+        fork(worker)
     ];
 }
